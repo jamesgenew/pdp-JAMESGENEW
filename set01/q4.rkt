@@ -5,12 +5,21 @@
 (require "extras.rkt")
 (require 2htdp/image)
 (check-location "01" "q4.rkt")
+(provide string-insert)
+
 
 ;Problem 4
 ;string, nonnegative integer->string
-;Given a string and an integer i, returns the string with "_" added at the ith position
+;GIVEN: a string and an integer i
+;RETURNS: The given string with "_" added at the ith position
+;Design strategy: Use built in string functions to perform the insert
 ;Example: Given james and 3, returns jam_es
 ;s1 is a string, i is an integer
 ;(define (string-insert s num) 0)
 
-(define (string-insert s1 num) (string-append (string-append (substring s1 0 num) "_") (substring s1 num (string-length s1)) ))     
+(define (string-insert s1 num) (string-append (string-append (substring s1 0 num) "_") (substring s1 num (string-length s1)) ))
+
+(begin-for-test
+  (check-equal? (string-insert "james" 3) "jam_es")
+  (check-equal? (string-insert "washer" 2) "wa_sher")
+  )

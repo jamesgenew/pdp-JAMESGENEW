@@ -4,10 +4,17 @@
 (require rackunit)
 (require "extras.rkt")
 (check-location "01" "q1.rkt")
+(provide distance-to-origin)
 
 ;Problem 1
 ;Number, Number -> Number
-;Computes the distance to the origin from a point (X,Y)
+;GIVEN: an X coordinate in meters and a Y coordinate in meters
+;RETURNS: The distance from the (X,Y) coordinate to the origin
+;Design strategy: Combine simpler functions, namely sqrt and simple math functions
 ;X is a nonnegative number, Y is a nonnegative number
-;Given: 3, 4 Expect: 5
+;Given: x=3, y=4 Expect: 5
 (define (distance-to-origin x y) (sqrt (+ (* x x) (* y y))))
+
+(begin-for-test
+  (check-equal? (distance-to-origin 3 4) 5)
+  )

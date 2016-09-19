@@ -5,12 +5,19 @@
 (require "extras.rkt")
 (check-location "01" "q3.rkt")
 (require 2htdp/image)
-
+(provide image-area)
 
 ;Problem 3
 ;Image -> nonnegative integer
-;Given an image, returns number of pixels in image
+;Given: An image
+;RETURNS: The number of pixels in the given image
 ;Example: given a 10 pixel by 4 pixel image, returns 40
+;Design Strategy: Combine simple built in image functions
 ;i is an image
 ;(define (image-area image) 0)
 (define (image-area i) (* (image-height i) (image-width i)))
+
+(begin-for-test
+  (check-equal? (image-area (square 40 "solid" "blue")) 1600)
+  (check-equal? (image-area (rectangle 10 2 "outline" "red")) 20)
+  )

@@ -4,11 +4,18 @@
 (require rackunit)
 (require "extras.rkt")
 (check-location "01" "q2.rkt")
-
+(provide string-last)
 
 ;Problem 2
 ;String -> Character
-;Given a string, returns the last character of the string
+;GIVEN: A string
+;RETURNS: The last character of the given string
+;Design strategy: Combine simpler functions, string-ref string-length and a subtraction
 ;S is a non-empty string
 ;Given James, expect "s"
 (define (string-last s) (string-ref s (- (string-length s) 1)))
+
+(begin-for-test
+  (check-equal? (string-last "james") #\s)
+  (check-equal? (string-last "washer") #\r)
+  )

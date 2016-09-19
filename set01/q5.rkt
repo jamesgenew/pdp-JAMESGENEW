@@ -5,12 +5,20 @@
 (require "extras.rkt")
 (require 2htdp/image)
 (check-location "01" "q5.rkt")
+(provide string-delete)
 
 ;Problem 5
 ;string, nonnegative integer->string
-;Given a string and an integer i, returns string with the character at the ith position removed
+;GIVEN: A string and an integer i
+;RETURNS: The given string with the character at the ith position removed
 ;Example: given "james" and 2, returns "jaes".
-;
+;Design Strategy: Combine simple built in string functions to separate the
+;substrings surrounding the chosen character and then combine them
 ;(define (string-delete s2 i2) 0)
 
 (define (string-delete s2 i2) (string-append (substring s2 0 i2) (substring s2 (+ i2 1) (string-length s2))))
+
+(begin-for-test
+  (check-equal? (string-delete "james" 2) "jaes")
+  (check-equal? (string-delete "washer" 4) "washr")
+  )
